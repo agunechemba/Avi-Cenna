@@ -82,6 +82,23 @@ body {
   flex-direction: column;
 }
 
+.logo-link {
+    text-decoration: none; /* Removes the underline */
+    display: flex;         /* Maintains the layout of img and text */
+    align-items: center;   /* Keeps logo and text centered vertically */
+    color: inherit;        /* Prevents the text from turning blue */
+}
+
+.logo-link:hover {
+    opacity: 0.9;          /* Optional: slight fade effect to show it's clickable */
+}
+
+.brand-name, .brand-sub {
+    display: block;        /* Ensures the text stays stacked */
+}
+
+
+
 .brand-name {
   font-size: 24px;
   font-weight: 700;
@@ -129,6 +146,8 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+
 
 .virtual-tour-btn {
   position: absolute;
@@ -285,7 +304,7 @@ body {
   opacity: 0.9;
 }
 
-/* Partners */
+/* Partners 
 .partners {
   max-width: 1100px;
   margin: 40px auto;
@@ -307,7 +326,7 @@ body {
 .partners img:hover {
   filter: grayscale(0);
   opacity: 1;
-}
+} */
 
 /* Footer */
 .main-footer {
@@ -403,4 +422,491 @@ body {
   .virtual-tour-btn {
     left: 20px;
   }
+}
+
+
+
+
+
+
+/* Stats Counter Section */
+.stats-counter {
+  background-color: var(--dark-blue); /* Using your existing variable */
+  padding: 60px 0;
+  color: white;
+  text-align: center;
+}
+
+.stats-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+/* Responsive adjustment for Mobile */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on tablets */
+    gap: 40px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr; /* Stacked on small phones */
+  }
+}
+
+
+.stat-number {
+    min-width: 100px; /* Prevents layout shifting during animation */
+    display: inline-block;
+}
+
+
+
+
+
+
+/* Sub-page Specific Styles */
+.page-banner {
+    height: 250px;
+    background: url('https://csspicker.dev/api/image/?q=classroom+background&image_type=photo') center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-overlay {
+    background: rgba(74, 144, 226, 0.8); /* Your primary blue with transparency */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-overlay h1 {
+    color: white;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.content-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.image-block img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+}
+
+/* Tooltip on hover */
+.whatsapp-float .tooltip {
+  visibility: hidden;
+  width: 100px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  right: 70px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.whatsapp-float:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+
+
+
+
+
+/* Admissions Page Specifics */
+.admissions-bg {
+    background: url('https://csspicker.dev/api/image/?q=school+reception&image_type=photo') center/cover;
+}
+
+.admission-steps {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--light-gray);
+    padding: 15px 25px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-blue);
+}
+
+.step-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* Inquiry Form Styling - FIXED OVERLAP */
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.styled-form .form-group {
+    margin-bottom: 20px;
+}
+
+.styled-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Increased gap for better breathing room on desktop */
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.styled-form input, 
+.styled-form select, 
+.styled-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    /* IMPORTANT: This prevents inputs from crossing into each other */
+    box-sizing: border-box; 
+    display: block;
+}
+
+.submit-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--dark-blue);
+}
+
+@media (max-width: 600px) {
+    .styled-form .form-row {
+        grid-template-columns: 1fr;
+        gap: 0; /* Let form-group margin-bottom handle spacing on mobile */
+    }
+}
+
+
+
+/* Student Life Page Styles */
+.student-life-bg {
+    background: url('https://csspicker.dev/api/image/?q=happy+school+students&image_type=photo') center/cover;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.activity-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+}
+
+.activity-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info h3 {
+    margin-top: 0;
+    color: var(--primary-blue);
+    font-size: 20px;
+}
+
+.card-info p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+
+/* Facilities Gallery Styles */
+.facilities-bg {
+    background: url('https://csspicker.dev/api/image/?q=modern+school+building+exterior&image_type=photo') center/cover;
+}
+
+.facilities-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 250px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 20px 15px;
+    font-weight: 600;
+    font-size: 16px;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .facilities-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+.accreditations {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-item img {
+    height: 60px; /* Adjust height to keep logos uniform */
+    width: auto;
+    filter: grayscale(100%); /* Professional look */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%); /* Brings back color on hover */
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        gap: 20px;
+    }
+    .logo-item img {
+        height: 45px;
+    }
+}
+
+
+
+
+/* --- Desktop Default --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary-blue);
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger */
+        z-index: 1001;
+    }
+
+    .main-nav {
+        position: fixed;
+        left: -100%; /* Hide off-screen */
+        top: 80px; /* Adjust based on your header height */
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        left: 0; /* Slide in */
+    }
+
+    .main-nav a {
+        padding: 20px;
+        display: block;
+        border-bottom: 1px solid #eee;
+    }
+    
+    /* Hamburger to X Animation */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
