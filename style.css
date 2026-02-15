@@ -872,44 +872,35 @@ body {
 
 /* --- Mobile Styles --- */
 @media (max-width: 768px) {
-    /* 1. Ensure the header container itself stays on top of the sliding menu */
-    .main-header {
-        position: relative; 
-        z-index: 2000; /* Higher than the nav menu */
-        background-color: #fff; /* Ensures header is opaque */
-    }
-
     .header-content {
         justify-content: space-between;
         padding: 10px 20px;
-        height: 70px; /* Fixed height makes top calculation easier */
-        display: flex;
-        align-items: center;
-        background-color: #fff;
+        height: 60px; /* Slimmer header to reduce gap */
     }
 
-    /* 2. Hamburger button stays visible above everything */
     .menu-toggle {
-        display: block; 
-        z-index: 2100; /* Highest z-index */
-        position: relative;
+        display: block;
+        z-index: 1001;
+        transition: opacity 0.3s ease;
     }
 
-    /* 3. The Menu - Adjusted Top and Z-index */
+    /* THE KEY: Make the toggle invisible when menu is open */
+    .menu-toggle.is-active {
+        opacity: 0; 
+    }
+
     .main-nav {
         position: fixed;
-        left: -100%; 
-        top: 70px; /* MATCH THIS exactly to your header height */
+        left: -100%;
+        top: 60px; /* Aligned with header height */
         flex-direction: column;
         background-color: #fff;
         width: 100%;
-        height: calc(100vh - 70px); /* Fills screen below the header */
+        height: calc(100vh - 60px);
         text-align: center;
-        transition: 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        z-index: 1000; /* Lower than header, preventing overlap */
-        padding-top: 30px; /* Adds space so 'Home' isn't under the X */
-        overflow-y: auto; /* Allows scrolling if menu is long */
+        transition: 0.3s;
+        z-index: 1000;
+        padding-top: 20px; /* Reduced space between header and Home */
     }
 
     .main-nav.active {
@@ -917,13 +908,14 @@ body {
     }
 
     .main-nav a {
-        padding: 18px;
+        padding: 20px;
         display: block;
         border-bottom: 1px solid #eee;
-        color: var(--primary-blue);
-        font-weight: 500;
+        font-size: 20px; /* FIXED: Larger text for mobile */
+        font-weight: 600;
+        color: #333;
     }
-    
+}    
     /* Hamburger to X Animation */
     .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
