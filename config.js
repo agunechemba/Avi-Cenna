@@ -93,9 +93,20 @@ const footerHTML = `
         </div>
         <div class="footer-col">
             <h4>Get Directions</h4>
-            <div class="map-placeholder">
-                <img src="https://csspicker.dev/api/image/?q=google+map+location&image_type=photo" alt="Map">
-            </div>
+            <div class="map-container-wrapper">
+    <div class="embed-map-responsive">
+        <div class="embed-map-container">
+            <iframe 
+                class="embed-map-frame" 
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0" 
+                src="https://maps.google.com/maps?q=Avi-Cenna%20International%20School%20Ikeja&t=&z=15&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     <div class="footer-bottom">
