@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School News | Avi-Cenna International</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner facilities-bg">
+       <div class="banner-overlay">
+        <h1>News & Events</h1>
+          </div>
+    </section>
+
+    <div class="avi-cenna-container">
+    <div id="blog-grid" class="blog-grid">
+        <div id="loading-state">Loading latest news...</div>
+    </div>
+
+    <div id="post-detail-view" class="hidden">
+        <button onclick="closeFullPost()" class="back-btn">← Back to All News</button>
+        <div id="full-post-content"></div>
+    </div>
+</div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="config.js"></script>
+    <script src="loader.js"></script>
+
+    <script>
+        // REPLACE with your actual Google Web App URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZ8zco4oAhEb58OoV-0obL3N4IqXF-FtOiL0Kcrug2Zau56aa5CwZaXxt9RQ-T7XgV/exec";
+let allPosts = []; // Global store for posts
+
+async function fetchBlogPosts() {
+    const grid = document.getElementById('blog-grid');
+    try {
+        const response = await fetch(SCRIPT_URL);
+        allPosts = await response.json(); // Save posts to the global variable
+        renderGrid(allPosts.reverse());
+    } catch (error) {
+        grid.innerHTML = "<p>Error loading news.</p>";
+    }
+}
+
+function renderGrid(posts) {
+    const grid = document.getElementById('blog-grid');
+    grid.innerHTML = posts.map(post => {
+        const postDate = new Date(post.Date).toLocaleDateString('en-GB', {
+            day: 'numeric', month: 'long', year: 'numeric'
+        });
+
+        return `
+            <article class="blog-card">
+                <div class="blog-image">
+                    <img src="${post.MediaLink}" onerror="this.src='https://via.placeholder.com/400x250'">
+                    <span class="blog-category">${post.Category}</span>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">${postDate}</span>
+                    <h2>${post.Title}</h2>
+                    <p>${post.Content.substring(0, 100)}...</p>
+                    <button class="read-more-btn" onclick="openFullPost('${post.ID}')">Read Full Story →</button>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+// THE NEW VIEW LOGIC
+function openFullPost(postId) {
+    const post = allPosts.find(p => p.ID == postId);
+    if (!post) return;
+
+    // Hide Grid, Show Detail
+    document.getElementById('blog-grid').classList.add('hidden');
+    const detailView = document.getElementById('post-detail-view');
+    detailView.classList.remove('hidden');
+
+    const postDate = new Date(post.Date).toLocaleDateString('en-GB', {
+        day: 'numeric', month: 'long', year: 'numeric'
+    });
+
+    document.getElementById('full-post-content').innerHTML = `
+        <div class="full-post-header">
+            <span class="blog-category">${post.Category}</span>
+            <span class="blog-date">${postDate}</span>
+            <h1>${post.Title}</h1>
+        </div>
+        <div class="full-post-media">
+             <img src="${post.MediaLink}" style="width:100%; border-radius:15px;">
+        </div>
+        <div class="full-post-body">
+            <p style="white-space: pre-wrap;">${post.Content}</p>
+        </div>
+    `;
+    
+    window.scrollTo(0, 0); // Scroll to top
+}
+
+function closeFullPost() {
+    document.getElementById('blog-grid').classList.remove('hidden');
+    document.getElementById('post-detail-view').classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', fetchBlogPosts);
+        
+    </script>
+</body>
+</html>

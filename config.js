@@ -46,6 +46,7 @@ const headerHTML = `
             <a href="about.html">About</a>
             <a href="admissions.html">Admissions</a>
             <a href="student-life.html">Student Life</a>
+            <a href="blog.html">Blog</a>
             <a href="facilities.html">Facilities</a>
         </nav>
     </div>
